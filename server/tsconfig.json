@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "allowUnreachableCode": false,
+        "declaration": true,
+        "declarationMap": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "target": "ES5",
+        "inlineSourceMap": true,
+        "strict": true,
+        "pretty": true,
+        "lib": [
+            "es7"
+        ]
+    }
+}
