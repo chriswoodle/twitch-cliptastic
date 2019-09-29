@@ -18,7 +18,7 @@ router.get('/:broadcaster_id', (req, res) => {
 
         return SDK.getClips(query);
     }).then(response => {
-        console.log(response.data.data, game_id);
+        console.log(response.status, response.data.data, game_id);
         const clips = response.data.data.filter((clip: any) => {
             return clip.game_id === game;
         });

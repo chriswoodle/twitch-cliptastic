@@ -19,7 +19,8 @@ export class TwitchSDK {
         console.log(url);
         return axios.get(url.toString(), {
             headers: {
-                "Client-ID": this.clientId
+                "Client-ID": this.clientId,
+                "Cache-Control": "no-cache"
             }
         });
     }
@@ -51,6 +52,7 @@ function expandQueryParams(url: URL, query: any) {
     Object.keys(query).forEach(param => {
         url.searchParams.append(param, (<any>query)[param])
     })
+    // url.searchParams.append('no-cache', Math.random() + '')
 }
 
 export const SDK = new TwitchSDK(TWITCH_CLIENT_ID);
