@@ -5,11 +5,14 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc -b -v",
-    "watch": "tsc -b -v -w"
+    "watch": "tsc -b -v -w",
+    "start": "node -r dotenv/config dist/index"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.4",
+    "dotenv": "^8.1.0",
     "typescript": "^3.6.3"
   },
   "dependencies": {
@@ -17,9 +20,11 @@
     "@types/debug": "^4.1.5",
     "@types/express": "^4.17.1",
     "@types/morgan": "^1.7.37",
+    "axios": "^0.19.0",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1"
   }
 }

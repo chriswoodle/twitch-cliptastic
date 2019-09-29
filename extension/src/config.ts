@@ -1,6 +1,8 @@
 import * as debug from 'debug';
 const log = debug('ext:config-ts');
 
+import './style.scss';
+
 import App from './config.vue';
 
 import Vue from 'vue';
