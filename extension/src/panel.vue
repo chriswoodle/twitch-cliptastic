@@ -1,5 +1,5 @@
 <template>
-    <div class="extension">
+    <div class="extension" :class="[theme]">
         <div>
             <h1 class='header'>Related clips</h1>
         </div>
@@ -26,10 +26,16 @@ import axois from 'axios';
 
 @Component
 export default class Panel extends Vue {
+    theme: string = 'dark';
     clips: any[] = [];
 
     async mounted() {
         log('VUE! nutty mounted!!');
+
+        twitch.theme.subscribe(theme => {
+            this.theme = theme;
+        });
+
         const token = await twitch.token();
         // log(context);
 
@@ -50,7 +56,12 @@ export default class Panel extends Vue {
                 .then((response) => {
                     // handle success
                     console.log(response);
-                    replaceArray(this.clips, response.data.items);
+                    const clips = response.data.items;
+                    if (clips.length > 0) {
+                        replaceArray(this.clips, response.data.items);
+                    } else {
+                        // No related clips
+                    }
                 })
                 .catch((error) => {
                     // handle error
@@ -63,13 +74,25 @@ export default class Panel extends Vue {
 
 <style lang="scss" scoped>
 .extension {
-}
-
-.header {
-    color: #e3e3e3;
-}
-
-.clip-title {
-    color: #e3e3e3;
+    height: 100%;
+    padding: 8px;
+    &.dark {
+        background-color: #1e1e1e;
+        .header {
+            color: #e3e3e3;
+        }
+        .clip-title {
+            color: #e3e3e3;
+        }
+    }
+    &.light {
+        background-color: #ededed;
+        .header {
+            color: #000;
+        }
+        .clip-title {
+            color: #000;
+        }
+    }
 }
 </style>

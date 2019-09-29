@@ -41,6 +41,10 @@ export class TwitchExtensionHelper implements PluginObject<TwitchExtensionHelper
             if (this.game.value !== context.game) {
                 this.game.next(context.game || '');
             }
+
+            if (this.theme.value !== context.theme) {
+                this.theme.next(context.theme || 'dark');
+            }
         });
 
 
